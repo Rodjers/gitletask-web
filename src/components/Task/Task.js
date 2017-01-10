@@ -1,7 +1,7 @@
 import React from 'react';
-import './TaskList.scss';
+import './Task.scss';
 
-class TaskList extends React.Component {
+class Task extends React.Component {
 
   render () {
     return (
@@ -16,4 +16,4 @@ class TaskList extends React.Component {
   }
 }
 
-export default TaskList;
+export default Task;
