@@ -28,14 +28,13 @@ export default (initialState = {}) => {
   // Store Instantiation and HMR Setup
   // ======================================================
   const store = createStore(
-    makeRootReducer(),
+    makeRootReducer,
     initialState,
     composeEnhancers(
       applyMiddleware(...middleware),
       ...enhancers
     )
   );
-  store.asyncReducers = {};
 
   // To unsubscribe, invoke `store.unsubscribeHistory()` anytime
   store.unsubscribeHistory = browserHistory.listen(updateLocation(store));
@@ -43,7 +42,6 @@ export default (initialState = {}) => {
   if (module.hot) {
     module.hot.accept('./reducers', () => {
       const reducers = require('./reducers').default;
-      store.replaceReducer(reducers(store.asyncReducers));
     });
   }
 
